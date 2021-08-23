@@ -85,6 +85,5 @@ variable "node_disk_type" {
 }
 
 variable "alerts_email_id" {
-  default = "myemail@mail.com"
   description = "email id to which alert emails are to be sent by the notification channel"
 }
