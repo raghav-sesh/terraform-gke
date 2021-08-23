@@ -3,6 +3,11 @@ variable "gke_num_nodes" {
   description = "number of gke nodes"
 }
 
+variable "cluster_name" {
+  default = "raghav-gke"
+  description = "Name of the gke cluster"
+}
+
 variable "project_id" {
   description = "project id"
 }
@@ -12,59 +17,60 @@ variable "region" {
 }
 
 variable "node_pool_name" {
-  #"${google_container_cluster.primary.name}-node-pool"
-
   default     = "raghav-node-pool"
-  description = "region"
+  description = "name of the node pool created in gke cluster"
 }
 
 variable "machine_type" {
   default = "e2-micro"
-  #description = "" #TO-DO
+  description = "Type of vm to be provisioned by gke"
 }
 
 variable "preemptible_node" {
   default = true
-  #description = "" #TO-DO
+  description = "Controls preemptible nature of the provisioned node for cost reasons"
+  #Set this to true since we are on GCP's free trial now
 }
 
 variable "kubernetes_version" {
   default = "1.20.8-gke.900"
-  #description
+  description = "Version of kubernetes to be used"
 }
 
 variable "autoscaling_min_node_count" {
   default = 2
-  #desciption
+  description = "Min node count for the autoscaling feature when enabled"
 }
 
 variable "autoscaling_max_node_count" {
   default = 5
-  #desciption
+  description = "Max node count for the autoscaling feature when enabled"
 }
 
 variable "enable_autoscaling" {
   default = true
-  #description
+  description = "Controls autoscaling feature configured in gke.tf"
 }
 
 variable "auto_repair_node_pool" {
   default = true
-  #description
+  description = "Configure auto repair of nodes if node goes down"
 }
 
 variable "auto_upgrade_node_pool" {
   default = true
-  #description
+  description = "Auto upgrade nature of nodes"
+  #Tried setting this to false to avoid inadvertent breakage of kubernetes apis but some issue with kubernetes channel
 }
 
 variable "node_disk_size_gb" {
   default = 10
-  #desciption
+  description = "Disk size (in GB) to be provisioned for the nodes in the node pool"
 }
 
 variable "node_disk_type" {
   default = "pd-standard"
+  description = "Type of disk to be provisioned for the nodes"
 
   validation {
     condition     = contains(["pd-standard", "pd-balanced", "pd-ssd"], var.node_disk_type)
