@@ -93,4 +93,4 @@ This should create the GKE cluster as shown below. The cluster can be verified i
 
 Since the default alerts have been configured with very low thresholds, both alerts should get triggered right after allocation of the cluster and email is sent as shown in the screenshot above.
 
-For further steps on deployment of containers, please follow steps mentioned in the other github repo --> 
+For further steps on deployment of kubernetes pods, please follow steps mentioned in the other github repo --> 
