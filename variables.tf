@@ -52,6 +52,11 @@ variable "enable_autoscaling" {
   description = "Controls autoscaling feature configured in gke.tf"
 }
 
+variable "vpc_ip_cidr_range"{
+  default = "10.10.0.0/24"
+  description = "IP Cidr range for the VPC network"
+}
+
 variable "auto_repair_node_pool" {
   default = true
   description = "Configure auto repair of nodes if node goes down"
@@ -77,4 +82,9 @@ variable "node_disk_type" {
     error_message = "Invalid node_disk_type selected. Please check configuration for supported values!"
   }
 
+}
+
+variable "alerts_email_id" {
+  default = "myemail@mail.com"
+  description = "email id to which alert emails are to be sent by the notification channel"
 }
