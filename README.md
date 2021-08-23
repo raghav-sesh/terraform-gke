@@ -17,10 +17,12 @@ A simple terraform configuration for deployment of a Kubernetes cluster on the G
 > notification_channel.tf --> email notification channel definition for the alerts
 >
 > deployments/test.tfvars --> variable values for test deployment
+>
+> outputs.tf --> definitions of output variables produced after terrform apply
 
 
 # External Resources
-Repo for kubernetes deployment yaml configuration files at __link__
+Repo for kubernetes deployment yaml configuration files at [kubernetes-simple-web](https://github.com/raghav-sesh/kubernetes-simple-web)
 
 # Prerequisites
 > GCP account
@@ -29,7 +31,7 @@ Repo for kubernetes deployment yaml configuration files at __link__
 > 
 > kubectl and kubectx setup
 
-For detailed steps to setup prerequisites, visit: https://learn.hashicorp.com/tutorials/terraform/gke?in=terraform/kubernetes#kubectl
+For detailed steps to setup prerequisites, visit [Hashicorp Terraform GKE tutorial](https://learn.hashicorp.com/tutorials/terraform/gke?in=terraform/kubernetes#kubectl)
 
 
 # The Terraform configuration
@@ -91,6 +93,12 @@ This should create the GKE cluster as shown below. The cluster can be verified i
 
 ![Screenshot 2021-08-22 at 10 13 23 PM](https://user-images.githubusercontent.com/22592043/130393856-94e6d5e0-e9c6-4f9b-bb9b-390726436ba3.png)
 
-Since the default alerts have been configured with very low thresholds, both alerts should get triggered right after allocation of the cluster and email is sent as shown in the screenshot above.
+kubectl can be configured with the gcloud credentials now by running:
+> gcloud container clusters get-credentials $(terraform output -raw kubernetes_cluster_name) --region $(terraform output -raw region)
 
-For further steps on deployment of kubernetes pods, please follow steps mentioned in the other github repo --> 
+
+For further steps on deployment of kubernetes pods, please follow steps mentioned in the other github repo --> [kubernetes-simple-web](https://github.com/raghav-sesh/kubernetes-simple-web) 
+
+
+# What's next
+Certificate handling with GKE managed TLS certificates as detailed [here](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_managed_ssl_certificate)
