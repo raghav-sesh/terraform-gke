@@ -72,17 +72,19 @@ Here is a sample alert email:
 
 
 # How to run
-Setup gcloud and authenticate to your GCP account
+1. Setup gcloud and authenticate to your GCP account
 >gcloud init
 >
 >gcloud auth application-default login
 
-Select the correct GCP project
+2. Select the correct GCP project
 >gcloud config set project project-name
 
-Apply the Terraform configuration to provision the cluster.
 
-Note: Cluster name can be modified as required in the deployments/test.tfvars variable
+3. Edit Terraform variables in deployments/test.tfvars as applicable.
+
+4. Apply the Terraform configuration to provision the cluster.
+
 >terraform init
 >
 >terraform apply -var-file=./deployments/test.tfvars
@@ -90,6 +92,9 @@ Note: Cluster name can be modified as required in the deployments/test.tfvars va
 
 This should create the GKE cluster as shown below. The cluster can be verified in the GCP project dashboard by navigating to Kubernetes Engine -> Clusters
 
+![Screenshot 2021-08-22 at 10 14 22 PM](https://user-images.githubusercontent.com/22592043/130393900-351db218-f23f-4445-bb90-60763874a604.png)
+
+![Screenshot 2021-08-22 at 10 13 23 PM](https://user-images.githubusercontent.com/22592043/130393856-94e6d5e0-e9c6-4f9b-bb9b-390726436ba3.png)
 
 Since the default alerts have been configured with very low thresholds, both alerts should get triggered right after allocation of the cluster and email is sent as shown in the screenshot above.
 
