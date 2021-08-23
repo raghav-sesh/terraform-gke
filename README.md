@@ -53,16 +53,11 @@ As a sample, two alerts have been configured in the monitoring_alerts.tf
 
 >CPU allocatable utilization alert
 
-This alert is raised when the node pool's cpu utilization reaches a threshold.
-
-To simulate this alert, it is configured to be triggered on the event when CPU usage reaches as low as 0.01, i.e, 1% of max cpu usage
-
+This alert is raised when the node pool's cpu utilization reaches the threshold (default - 80% of max).
 
 >Memory allocatable utilization alert
 
-This alert is raised when the node pool's memory utilization reaches a threshold.
-
-To simulate this alert, it is configured to be triggered on the event when memory usage reaches as low as 0.001, i.e, 0.1% of max mem usage
+This alert is raised when the node pool's memory utilization reaches the threshold (default - 80% of max).
 
 # Alert notification
 An email notification has been configured in notification_channel.tf to send mails on  the event of any alert. 
